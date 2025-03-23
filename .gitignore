@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/SeleniumAutomation/bin/Debug/net8.0
+/.vs
+/SeleniumAutomation/obj/Debug/net8.0
+/SeleniumAutomation/obj/project.assets.json
+/SeleniumAutomation/obj/project.nuget.cache
+/SeleniumAutomation/obj/SeleniumAutomation.csproj.nuget.dgspec.json
+/SeleniumAutomation/obj/SeleniumAutomation.csproj.nuget.g.props
+/SeleniumAutomation/obj/SeleniumAutomation.csproj.nuget.g.targets
+/TestProject/bin/Debug/net8.0
+/TestProject/obj

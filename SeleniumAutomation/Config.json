@@ -1,0 +1,21 @@
+{
+  "env": "stage",
+  "url": {
+    "devUrl": "https://www.saucedemo.com/",
+    "stageUrl": "https://www.saucedemo.com/"
+
+  },
+  "userInfoDev": {
+
+    "username": "c3RhbmRhcmRfdXNlcg==",
+    "password": "c2VjcmV0X3NhdWNl"
+
+  },
+  "userInfoStage": {
+
+    "username": "cHJvYmxlbV91c2Vy",
+    "password": "c2VjcmV0X3NhdWNl"
+
+  }
+
+}
