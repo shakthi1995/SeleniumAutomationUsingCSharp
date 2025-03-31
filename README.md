@@ -1,2 +1,2 @@
 # TestAutomationCSharp
-A basic project for developing Test Automation Framework
+A Basic Framework setup with Selenium & Nunit using c# language.
