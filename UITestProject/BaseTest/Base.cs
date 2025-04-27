@@ -30,12 +30,27 @@ namespace SeleniumAutomation.BaseTest
             driver = new ChromeDriver(options);
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(UserDetails.GetUrl);
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
 
         [TearDown]
         public void TearDown() 
         {
             driver.Dispose();
+        }
+
+        public void CloseAllOtherWindows()
+        {
+            string currentWindowHandle = driver.CurrentWindowHandle;
+            foreach (string windowHandle in driver.WindowHandles)
+            {
+                if (windowHandle != currentWindowHandle)
+                {
+                    driver.SwitchTo().Window(windowHandle);
+                    driver.Close();
+                }
+            }
+            driver.SwitchTo().Window(currentWindowHandle);
         }
     }
 }

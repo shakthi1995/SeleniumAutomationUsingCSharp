@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NuGet.Frameworks;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumAutomation.Config;
@@ -22,7 +23,7 @@ namespace SeleniumAutomation.Pages.SauceDemo
         }
 
         #region WebElements
-
+        //private By userName = By.Id("user-name");
         private IWebElement usernameTextbox => driver.FindElement(By.Id("user-name"));
         private IWebElement passwordTextbox => driver.FindElement(By.Id("password"));
         private IWebElement loginButton => driver.FindElement(By.Id("login-button"));
@@ -36,32 +37,23 @@ namespace SeleniumAutomation.Pages.SauceDemo
         {
             usernameTextbox.SendKeys(userName);
             passwordTextbox.SendKeys(password);
-            //IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            //js.ExecuteScript("arguments[0].scrollIntoView();", loginButton);
+
+            //Scroll to the element - not necessary for this scenario
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("arguments[0].scrollIntoView();", loginButton);
+
+
             loginButton.Click();
+
+            //Explicit wait
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("app_logo")));
+
+            //Delaying the task for 6 seconds
             Task.Delay(TimeSpan.FromSeconds(6)).Wait();
-            //WaitHelper waitObj = new();
-            //waitObj.WaitForPageLoad(driver, 5);
-
-            SelectElement element = new SelectElement(loginButton);
-            element.SelectByValue("");
-
-            Actions action = new Actions(driver);
-            action.ContextClick(usernameTextbox).Build().Perform();
-
-            DefaultWait<IWebDriver> fluentWait = new DefaultWait<IWebDriver>(driver)
-            {
-                Timeout = TimeSpan.FromSeconds(4),
-                PollingInterval = TimeSpan.FromMilliseconds(400)
-            };
-            fluentWait.IgnoreExceptionTypes(typeof(ArgumentNullException));
-            fluentWait.Until(ExpectedConditions.ElementExists(By.ClassName("app_logo")));
-
 
             Assert.That(driver.Url.Contains("inventory"));
-            
+
         }
 
         #endregion
