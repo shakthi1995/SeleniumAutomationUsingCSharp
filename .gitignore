@@ -12,3 +12,7 @@
 /SeleniumAutomation/obj/SeleniumAutomation.csproj.nuget.g.targets
 /TestProject/bin/Debug/net8.0
 /TestProject/obj
+/SeleniumAutomation/obj
+/UITestProject/bin/Debug/net8.0
+/UITestProject/.vs/UITestProject
+/UITestProject/obj
